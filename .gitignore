@@ -1,3 +1,5 @@
 node_modules
 config.js
-authPlusNotes.js
+notesAuth.js
+notesUser.js
+notesPassport.js
