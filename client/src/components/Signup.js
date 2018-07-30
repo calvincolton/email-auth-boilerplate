@@ -1,12 +1,25 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { signup } from '../actions';
+// import * as actions from '../../actions';
 import { reduxForm, Field } from 'redux-form';
 import { Form, Input } from 'semantic-ui-react';
 
 class Signup extends Component {
+  onSubmit = (formProps) => {
+    this.props.signup(formProps);
+  };
+
   render() {
+    // handleSubmit() provided by reduxForm
+    const { handleSubmit } = this.props;
+
     return (
       <div>
-        {/* <form>
+        {/* the following is basic/reduxForm vs
+          semantic-ui-react combined with redux form */}
+        {/* <form onSubmit={handleSubmit(this.onSubmit)}>
           <fieldset>
             <label>Email</label>
             <Field
@@ -23,8 +36,9 @@ class Signup extends Component {
               component="input"
             />
           </fieldset>
+          <button>Sign Up</button>
         </form> */}
-        <form>
+        <form onSubmit={handleSubmit(this.onSubmit)}>
           <Form.Field>
             <label>Email</label>
             <Field
@@ -45,10 +59,17 @@ class Signup extends Component {
             />
             {/* <Input name="password" type="password" /> */}
           </Form.Field>
+          <button>Sign Up</button>
         </form>
       </div>
     );
   }
 }
 
-export default reduxForm({ form: 'signup' })(Signup);
+export default compose(
+  connect(null, { signup }),
+  reduxForm({ form: 'signup' })
+)(Signup);
+
+// NOTE: compose allows us to apply multiple HOCs
+// to a single component with a cleaner syntax
