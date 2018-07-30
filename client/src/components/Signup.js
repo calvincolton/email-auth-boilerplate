@@ -8,7 +8,9 @@ import { Form, Input } from 'semantic-ui-react';
 
 class Signup extends Component {
   onSubmit = (formProps) => {
-    this.props.signup(formProps);
+    this.props.signup(formProps, () => {
+      this.props.history.push('/feature');
+    });
   };
 
   render() {
@@ -59,6 +61,9 @@ class Signup extends Component {
             />
             {/* <Input name="password" type="password" /> */}
           </Form.Field>
+          <div>
+            {this.props.errorMessage}
+          </div>
           <button>Sign Up</button>
         </form>
       </div>
@@ -66,8 +71,13 @@ class Signup extends Component {
   }
 }
 
+
+const mapStateToProps = (state) => {
+  return { errorMessage: state.auth.errorMessage }
+};
+
 export default compose(
-  connect(null, { signup }),
+  connect(mapStateToProps, { signup }),
   reduxForm({ form: 'signup' })
 )(Signup);
 
