@@ -1,10 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'semantic-ui-css/semantic.min.css';
+import { BrowserRouter, Route } from 'react-router-dom';
 
 import App from './components/App';
+import Welcome from './components/Welcome';
 
 ReactDOM.render(
-  <App />,
+  <BrowserRouter>
+    <App>
+      <Route path="/" exact component={Welcome} />
+    </App>
+  </BrowserRouter>,
   document.querySelector("#root")
 );
