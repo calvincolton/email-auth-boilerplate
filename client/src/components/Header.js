@@ -6,22 +6,12 @@ class Header extends Component {
   render() {
     return (
       <Menu className="navigation-header">
-        <Link to="/">
-          <a className="item">The Tiger</a>
-        </Link>
+        <Link to="/">The Tiger</Link>
       <Menu.Menu position="right">
-        <Link to="/signup">
-          <a className="item">Sign Up</a>
-        </Link>
-        <Link to="/signin">
-          <a className="item">Sign In</a>
-        </Link>
-        <Link to="/signout">
-          <a className="item">Sign Out</a>
-        </Link>
-        <Link to="feature">
-          <a className="item">Feature</a>
-        </Link>
+        <Link to="/signup">Sign Up</Link>
+        <Link to="/signin">Sign In</Link>
+        <Link to="/signout">Sign Out</Link>
+        <Link to="feature">Feature</Link>
       </Menu.Menu>
     </Menu>
     );
