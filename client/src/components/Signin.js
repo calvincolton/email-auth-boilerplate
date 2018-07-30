@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { signup } from '../actions';
+import { signin } from '../actions';
+// import * as actions from '../../actions';
 import { reduxForm, Field } from 'redux-form';
 import { Form, Input } from 'semantic-ui-react';
 
-class Signup extends Component {
+class Signin extends Component {
   onSubmit = (formProps) => {
-    this.props.signup(formProps, () => {
+    this.props.signin(formProps, () => {
       this.props.history.push('/feature');
     });
   };
@@ -18,27 +19,6 @@ class Signup extends Component {
 
     return (
       <div>
-        {/* the following is basic/reduxForm vs
-          semantic-ui-react combined with redux form */}
-        {/* <form onSubmit={handleSubmit(this.onSubmit)}>
-          <fieldset>
-            <label>Email</label>
-            <Field
-              name="email"
-              type="text"
-              component="input"
-            />
-          </fieldset>
-          <fieldset>
-            <label>Password</label>
-            <Field
-              name="password"
-              type="password"
-              component="input"
-            />
-          </fieldset>
-          <button>Sign Up</button>
-        </form> */}
         <form onSubmit={handleSubmit(this.onSubmit)}>
           <Form.Field>
             <label>Email</label>
@@ -63,7 +43,7 @@ class Signup extends Component {
           <div>
             {this.props.errorMessage}
           </div>
-          <button>Sign Up</button>
+          <button>Sign In</button>
         </form>
       </div>
     );
@@ -76,9 +56,9 @@ const mapStateToProps = (state) => {
 };
 
 export default compose(
-  connect(mapStateToProps, { signup }),
-  reduxForm({ form: 'signup' })
-)(Signup);
+  connect(mapStateToProps, { signin }),
+  reduxForm({ form: 'signin' })
+)(Signin);
 
 // NOTE: compose allows us to apply multiple HOCs
 // to a single component with a cleaner syntax
