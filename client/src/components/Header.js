@@ -26,7 +26,7 @@ class Header extends Component {
     return (
       <Menu className="navigation-header">
         <div>
-          <Link to="/">The Tiger</Link>
+          <Link to="/">The Auth Boilerplate</Link>
         </div>
       <Menu.Menu position="right">
         {this.renderAuthLinks()}
